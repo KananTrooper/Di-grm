@@ -1,0 +1,27 @@
+@startuml
+left to right direction
+actor "guest" as Guest
+rectangle {
+usecase "Qrcode Scanner" as QRcode
+usecase "Wait Permision From Admin " as Permision
+usecase "Data Display User " as DDU
+usecase "Google Map" as Map
+}
+Guest .> QRcode : <<include>>
+QRcode .> Permision : <<include>>
+Permision .> DDU : <<include>>
+DDU .> Map : <<include>>
+
+
+
+
+
+
+
+
+
+
+
+
+
+@enduml

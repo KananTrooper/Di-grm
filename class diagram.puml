@@ -1,0 +1,42 @@
+@startuml
+skinparam classAttributeIconSize 0
+class Person {
+
+  - Name: String
+  - Surname: String
+  - Address: String
+  - Phone: String
+  - RelativeAddress: String
+  - ChronicDisease: String
+  - Gender: String
+  - Age: int
+  - MaritalStatus: String
+  - EducationStatus: String
+  
+
+  + displayPerson()
+}
+
+class MainPage {
+  + navigateToUserLogin()
+  + navigateToAdminLogin()
+  + navigateToGuest()
+}
+
+class User {}
+class Admin {
+    - Id_Admin: String
+    - password: String
+
+    + addUser()
+    + removeUser()
+    + editUser()
+    + updateUser()
+
+}
+class Guest {}
+
+MainPage --> User : Include
+MainPage --> Admin : Include
+MainPage --> Guest : Include
+@enduml

@@ -1,0 +1,27 @@
+@startuml
+left to right direction
+actor "user" as User
+rectangle {
+    together{
+usecase "register" as Register
+usecase "Profile" as Profile
+usecase "login" as Login
+usecase "logout" as Logout
+    }
+
+User --> Register
+Register .> Login : <<include>>
+Login .> Logout  : <<Extends>>
+Login .> Profile : <<include>>
+
+
+
+
+
+
+
+ 
+
+}
+
+@enduml

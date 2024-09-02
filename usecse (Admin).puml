@@ -1,0 +1,27 @@
+@startuml
+left to right directionclass diagram
+actor "admin" as Admin
+rectangle {
+usecase "login Admin" as Login
+usecase "logout Admin" as Logout
+usecase "Manage User" as ManageUser
+usecase "Notification From Guest " as Alert
+usecase "Permision" as Permision
+usecase " Edit : Name , Surname , Adress ,Phone , RelativeAdress , ChronicDisease , Gender , Age , MaritalStatus ,EductionStatus " as EditProfile
+
+
+
+
+
+}
+Admin .> Login : <<include>>
+Login .> Logout : <<extends>>
+Login .> ManageUser : <<include>>
+Login .> Alert : <<include>>
+Alert .> Permision : <<include>>
+ManageUser .> EditProfile : <<include>>
+
+
+
+
+@enduml
