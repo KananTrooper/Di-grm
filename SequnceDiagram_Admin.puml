@@ -1,0 +1,40 @@
+@startuml
+activate Admin
+Admin -> System : Open Application()
+activate System
+System --> Admin : Show Application()
+deactivate System
+
+
+Admin -> Login : Login Admin()
+activate Login
+Login --> Admin : Show Login()
+deactivate Login
+
+
+
+Admin -> UserManagement : Create Remove Edit UserData()
+activate UserManagement
+UserManagement -> Data :  Save Admin Activity ()
+deactivate UserManagement
+activate Data
+Data -> Data : StoreData()
+Data --> Admin : Show userdata()
+deactivate Data
+
+Admin -> GuestVerification : Check Request From \n From Guest()
+activate GuestVerification
+GuestVerification --> Admin : Permision Confirm()
+deactivate GuestVerification
+
+
+
+
+
+
+
+
+
+
+
+@enduml

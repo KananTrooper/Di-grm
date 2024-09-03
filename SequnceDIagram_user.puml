@@ -1,0 +1,30 @@
+@startuml
+user -> system : Open Application()
+
+activate system
+
+
+user -> system : Click Application()
+
+deactivate system
+
+user -> Register : Register()
+activate Register
+Register --> user : Show Register()
+deactivate Register
+
+user -> login : login()
+activate login
+login --> user : Show login()
+deactivate login
+
+user -> data : Request user Data \n Name , Surname , \n Address , Phone , \n RelativeAddress , \nChronicDisease , Gender , \n Age , MaritalStatus , \n EducationStatus()
+activate data
+data  --> user :show user data \n Name , Surname , \n Address , Phone , \n RelativeAddress , \nChronicDisease , Gender , \n Age , MaritalStatus , \n EducationStatus()
+deactivate data
+
+
+
+
+
+@enduml

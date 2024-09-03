@@ -1,0 +1,26 @@
+@startuml
+activate guest
+ guest -> system : Open Application ()
+ activate system 
+ system --> guest : Show Application()
+
+ guest -> Qrcodescaner : Press qrcode scanbutton()
+ activate Qrcodescaner
+ Qrcodescaner -> Data : Request Data User()
+ deactivate Qrcodescaner
+ activate Data
+ Data --> guest : Show Data User()
+
+
+ activate GoogleMap
+ Data -> GoogleMap : Route()
+ GoogleMap -> GoogleMap : find user location()
+ deactivate Data
+ GoogleMap --> guest : Display RealTimelocation()
+ deactivate GoogleMap
+
+
+
+ deactivate system
+
+@enduml

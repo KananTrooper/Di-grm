@@ -60,6 +60,11 @@ class Data_Display_ForGuest{
 
   + DisplayUserData(Req:alldatafron Class User)
 }
+Class googleMap{
+
+  + googleMapRoute(Req:Address From User ):String
+  + Navigate()
+} 
 
 
 
@@ -73,4 +78,10 @@ LoginAdminHandler --o Admin
 
 Check_Permision_ForData ..|> Guest
 Check_Permision_ForData "1..*" -- "1" Admin
+Data_Display_ForGuest "1..*" -- "1" User
+Guest --> Data_Display_ForGuest : Include
+Data_Display_ForGuest --> googleMap : Include
+googleMap "1"-- "1..*" User 
+
+
 @enduml
