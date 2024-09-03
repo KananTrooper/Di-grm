@@ -1,4 +1,5 @@
 @startuml
+skinparam defaultFontName Segoe UI
 |a| แอดมิน
 |b| ระบบ
 |c| ข้อมูลผู้ใช้งาน
