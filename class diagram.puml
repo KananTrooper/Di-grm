@@ -1,7 +1,13 @@
 @startuml
 skinparam classAttributeIconSize 0
-class Person {
 
+class MainPage {
+  + navigateToUserLogin()
+  + navigateToAdminLogin()
+  + navigateToGuest()
+}
+
+class User {
   - Name: String
   - Surname: String
   - Address: String
@@ -14,29 +20,57 @@ class Person {
   - EducationStatus: String
   
 
-  + displayPerson()
+  + displayUser()
 }
-
-class MainPage {
-  + navigateToUserLogin()
-  + navigateToAdminLogin()
-  + navigateToGuest()
-}
-
-class User {}
 class Admin {
-    - Id_Admin: String
-    - password: String
 
     + addUser()
     + removeUser()
     + editUser()
     + updateUser()
+    + Check_PermisionforGuest()
+    + NotificationFromGuest()
 
 }
-class Guest {}
+class LoginUserHandler{
+  - Id_User : String
+  - Password_User : String
 
-MainPage --> User : Include
-MainPage --> Admin : Include
-MainPage --> Guest : Include
+  + Check_user()
+  + Verification()
+}
+class LoginAdminHandler{
+  - Id_User : String
+  - Password_User : String
+
+  + Check_admin()
+  + Verification()
+}
+class Guest {
+  - Guest_id : String
+
+  +qr_codescan()
+
+}
+class Check_Permision_ForData{
+  
+  + SendRequestoAdmin(Req:Check_PermisionforGuest):bool
+}
+class Data_Display_ForGuest{
+
+  + DisplayUserData(Req:alldatafron Class User)
+}
+
+
+
+MainPage --> LoginUserHandler : Include
+MainPage --> LoginAdminHandler : Include
+MainPage "1"-- "1..*" Guest 
+
+
+LoginUserHandler --o User 
+LoginAdminHandler --o Admin 
+
+Check_Permision_ForData ..|> Guest
+Check_Permision_ForData "1..*" -- "1" Admin
 @enduml
