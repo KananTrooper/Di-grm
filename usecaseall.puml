@@ -1,0 +1,53 @@
+@startuml
+
+left to right direction
+
+actor "Admin" as Admin
+actor "Guest" as Guest
+actor "User" as User
+
+' จัดกลุ่ม Admin Use Cases
+package "Admin Functionality" {
+  usecase "Login Admin" as AdminLogin
+  usecase "Logout Admin" as AdminLogout
+  usecase "Manage User" as ManageUser
+  usecase "Notifications" as Alert
+  usecase "Edit Profile" as EditProfile
+}
+
+' จัดกลุ่ม Guest Use Cases
+package "Guest Functionality" {
+  usecase "QR Code Scanner" as QRcode
+  usecase "Wait for Admin Permission" as GuestPermission
+  usecase "View User Data" as DDU
+  usecase "Google Map" as Map
+}
+
+' จัดกลุ่ม User Use Cases
+package "User Functionality" {
+  usecase "Register" as Register
+  usecase "Login" as UserLogin
+  usecase "Logout" as UserLogout
+  usecase "Profile" as UserProfile
+}
+
+' ความสัมพันธ์ของ Guest
+Guest --> QRcode
+QRcode .> GuestPermission : <<include>>
+GuestPermission .> DDU : <<include>>
+DDU .> Map : <<include>>
+
+' ความสัมพันธ์ของ Admin
+Admin --> AdminLogin
+AdminLogin .> AdminLogout : <<extends>>
+AdminLogin .> ManageUser : <<include>>
+AdminLogin .> Alert : <<include>>
+ManageUser .> EditProfile : <<include>>
+
+' ความสัมพันธ์ของ User
+User --> Register
+Register .> UserLogin : <<include>>
+UserLogin .> UserLogout : <<extends>>
+UserLogin .> UserProfile : <<include>>
+
+@enduml

@@ -1,0 +1,43 @@
+@startchen
+
+left to right direction
+
+entity User {
+ Name{
+ FName : String
+ LName : String
+
+}
+ id_user : Int <<key>>
+ Username : String
+ Password : String
+ Address : String
+ Phone : String
+ RelativeAddress : String
+ ChronicDisease : String
+ Gender : String
+ Age : String
+ MaritalStatus : String
+ EducationStatus : String
+}
+entity Admin {
+ Id_ Admin : Int <<key>>
+ Admin_username : String
+ Admin_password : String
+}
+entity Guest {
+ Id_Guest : Int <<key>>
+ Date : Date
+ Time : Time
+
+}
+relationship was_relate_to {
+
+}
+
+Admin -1- was_relate_to
+ was_relate_to -N- User
+was_relate_to -N- Guest
+
+
+@endchen
